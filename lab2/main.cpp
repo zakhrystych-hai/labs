@@ -49,7 +49,7 @@ int main()
                   (abs(x1 - x2) == abs(y1 - y2));
 
     // Виведення логічного значення
-    cout << "Результат: " << result << endl;
+    cout << "Результат: " << boolalpha << result << endl;
 
     // Завдання 3. Math20
 
