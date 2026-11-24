@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-void proc1();
-void proc2();
-void integer();
+void task1();
+void task2();
+void task3();
 
 int main(){
 	int menu;
@@ -12,9 +12,9 @@ int main(){
     cin >> menu;
     if (cin){
     switch(menu) {
-    case 1: proc1(); break; // Виклик завдання Proc1
-   	case 2: proc2(); break; // Виклик завдання Proc2
-   case 3: integer(); break; // Виклик завдання Integer
+    case 1: task1(); break; // Виклик завдання Proc1
+   	case 2: task2(); break; // Виклик завдання Proc2
+    case 3: task3(); break; // Виклик завдання Integer
     // Повідомлення про неправильний номер завдання
     default: cout << "Wrong input! (Only 1-3)\n";}
     }
@@ -24,7 +24,7 @@ int main(){
 }
 
 // Завдання 1 (Proc44)
-void proc1(){
+void task1(){
 	double x1, y1, x2, y2, x3, y3; // Оголошення змінних координат вершин трикутника
 	cout << "Enter triagle x1 - y1: ";
     // Введення координат першої вершини
@@ -46,7 +46,7 @@ void proc1(){
 	cout << "S of triagle = " << S; // Виведення обчисленої площі
 }
 // Завдання 2 (Proc8)
-void proc2() {
+void task2() {
     int K, D1, D2;
     // Введення числа K
     cout << "\nEnter K: ";
@@ -78,18 +78,42 @@ void proc2() {
 }
 
  // Завдання 3. Integer10
-void integer(){
-	int n;
+// Функція введення числа з перевіркою коректності
+bool in_n(int &n){
     cout << "\nEnter three-digit number: ";
     if (!(cin >> n) || n < 100 || n > 999){
-   	    cout << "Wrong input!";
-        return;
-   }// Вводимо тризначне число
+        cout << "Wrong input!";
+        return false;
+    }
+    return true;
+}
+
+// Функція підрахунку результату
+void calc_digits(int n, int &last, int &middle){
     // Знаходимо останню цифру
-    int last = n % 10;
-    // Ділимо число на 10
-    int middle = (n / 10) % 10;
-    // Виводимо спочатку останню, а потім середню цифру
+    last = n % 10;
+    // Знаходимо середню цифру
+    middle = (n / 10) % 10;
+}
+
+// Функція виведення результату
+void out_res(int last, int middle){
     cout << last << " " << middle << endl;
+}
+
+// Завдання 3. Integer10
+void task3(){
+    int n, last, middle;
+
+    // Введення та перевірка числа
+    if (!in_n(n)){
+        return;
+    }
+
+    // Підрахунок результату
+    calc_digits(n, last, middle);
+
+    // Виведення результату
+    out_res(last, middle);
 }
 
