@@ -102,18 +102,43 @@ void out_res(int last, int middle){
 }
 
 // Завдання 3. Integer10
-void task3(){
-    int n, last, middle;
+// Функція введення числа з перевіркою коректності
+int in_n(){
+    int n;
+    cout << "\nEnter three-digit number: ";
+    if (!(cin >> n) || n < 100 || n > 999){
+        cout << "Wrong input!";
+        return 0;
+    }
+    return n;
+}
 
+// Функція підрахунку результату
+int calc_digits(int n){
+    // Знаходимо останню цифру
+    int last = n % 10;
+    // Знаходимо середню цифру
+    int middle = (n / 10) % 10;
+    // Об'єднуємо цифри в одне число
+    return last * 10 + middle;
+}
+
+// Функція виведення результату
+void out_res(int res){
+    cout << res / 10 << " " << res % 10 << endl;
+}
+
+// Основна процедура завдання 3
+void task3(){
     // Введення та перевірка числа
-    if (!in_n(n)){
+    int n = in_n();
+    if (n == 0){
         return;
     }
 
     // Підрахунок результату
-    calc_digits(n, last, middle);
+    int res = calc_digits(n);
 
     // Виведення результату
-    out_res(last, middle);
+    out_res(res);
 }
-
